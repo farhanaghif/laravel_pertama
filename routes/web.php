@@ -18,12 +18,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
-// Route::get('about', [AboutController::class, 'index']);
+})->name('welcome');
 Auth::routes();
 
 Route::middleware(['auth'])->group(function(){
     Route::resource('project', ProjectController::class);
-    Route::get('/dashboard',[HomeController::class, 'dashboard']);
+    Route::get('/dashboard',[HomeController::class, 'dashboard'])->name('dashboard');
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 });

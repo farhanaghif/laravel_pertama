@@ -1,6 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.home.user')
 
 @section('content')
+    <div class="pagetitle">
+        <h1>Project</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                <li class="breadcrumb-item active">Project</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -44,11 +53,11 @@
                                         <td>{{ $project->owner }}</td>
                                         <td>{{ $project->deadline }}</td>
                                         <td>{{ $project->progress }}%</td>
-                                        <td style="text-align: center">
+                                        <td style="text-align: center" class="d-flex justify-content-center">
                                             <a href="{{ route('project.show', $project->id) }}" class="btn btn-success mx-1"
                                                 role="button">Show</a>
-                                            <a href="{{ route('project.edit', $project->id) }}" class="btn btn-warning mx-1"
-                                                role="button">Edit</a>
+                                            <a href="{{ route('project.edit', $project->id) }}"
+                                                class="btn btn-warning mx-1" role="button">Edit</a>
                                             <button type="button" class="btn btn-danger mx-1" data-bs-toggle="modal"
                                                 data-bs-target="#modal-delete">Delete</button>
                                             @extends('project.partials.modal-delete')

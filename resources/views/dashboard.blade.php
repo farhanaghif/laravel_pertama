@@ -1,5 +1,5 @@
 @extends('layouts.home.user')
-@section('main')
+@section('content')
     <div class="pagetitle">
         <h1>Dashboard</h1>
         <nav>

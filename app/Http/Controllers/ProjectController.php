@@ -12,7 +12,8 @@ class ProjectController extends Controller
     {
         $data = [
             'title' => 'Project List',
-            'subtitle' => 'Ini adalah tampilan data project'
+            'subtitle' => 'Ini adalah tampilan data project',
+            'isiAsset' => asset('nice')
         ];
 
         $projects = Project::with('leader')->withCount('tasks')->get();
@@ -44,7 +45,12 @@ class ProjectController extends Controller
         // return response()->json($project);
         // pakai query
         $tasks = Task::where('project_id', $project->id)->get();
-        return view('project.show', compact('project', 'tasks'));
+
+        $data = [
+            'status' => 'Dashboard',
+            'isiAsset' => asset('nice')
+        ];
+        return view('project.show', compact('project', 'tasks'), $data);
     }
 
     public function edit($id)

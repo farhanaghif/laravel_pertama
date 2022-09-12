@@ -25,8 +25,11 @@ class HomeController extends Controller
         // $projects = Project::where('leader_id', auth()->user()->id)->get();
         // lebih singkat yg di bawah ini
         $projects = auth()->user()->projects;
-        // dd($project);
-        return view('home', compact('projects'));
+        $data = [
+            'status' => 'Dashboard',
+            'isiAsset' => asset('nice')
+        ];
+        return view('home', compact('projects'), $data);
     }
 
     public function dashboard()
@@ -36,7 +39,6 @@ class HomeController extends Controller
             'status' => 'Dashboard',
             'isiAsset' => asset('nice')
         ];
-        // dd($project);
         return view('dashboard', compact('projects',), $data);
     }
 }
