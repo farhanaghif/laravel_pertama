@@ -45,7 +45,7 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
-            <a href="{{ route('welcome') }}" class="logo d-flex align-items-center">
+            <a href="{{ route('home') }}" class="logo d-flex align-items-center">
                 <img src="{{ $isiAsset }}/assets/img/logo.png" alt="">
                 <span class="d-none d-lg-block">NiceAdmin</span>
             </a>
@@ -325,15 +325,24 @@
     <aside id="sidebar" class="sidebar">
 
         <ul class="sidebar-nav" id="sidebar-nav">
+            <li class="nav-heading">Fitur Admin</li>
 
             <li class="nav-item">
-                <a class="nav-link " href="index.html">
+                <a class="nav-link {{ Request()->routeIs('dashboard') ? '' : 'collapsed' }}"
+                    href="{{ route('dashboard') }}">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
                 </a>
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
+                <a class="nav-link {{ Request()->routeIs('project.index') || Request()->routeIs('project.show') ? '' : 'collapsed' }}"
+                    href="{{ route('project.index') }}">
+                    <i class="bi bi-menu-button-wide"></i>
+                    <span>Project</span>
+                </a>
+            </li>
+            {{-- <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse"
                     href="#">
                     <i class="bi bi-menu-button-wide"></i><span>Components</span><i
@@ -555,7 +564,7 @@
                     <i class="bi bi-file-earmark"></i>
                     <span>Blank</span>
                 </a>
-            </li><!-- End Blank Page Nav -->
+            </li><!-- End Blank Page Nav --> --}}
 
         </ul>
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Auth;
@@ -26,3 +27,9 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard',[HomeController::class, 'dashboard'])->name('dashboard');
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 });
+
+// Route::middleware('role:admin')->get('/admin', [AdminController::class,'index'])->name('index-admin');
+Route::middleware('role:superadmin')->get('/admin', [HomeController::class, 'index'])->name('admin');
+// Route::group(['middleware' => ['role:superadmin']], function () {
+//     Route::get('/admin', [AdminController::class,'index'])->name('index-admin');
+// });
